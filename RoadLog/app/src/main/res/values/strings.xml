@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RoadLog</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Interval between taking photos (setting in SharedPreferences) -->
+    <string name="picture_interval">PictureInterval</string>
+</resources>
