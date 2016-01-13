@@ -1,6 +1,7 @@
 package com.example.shustrik.roadlog;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
@@ -16,6 +17,8 @@ public class PictureSaveCallback implements Camera.PictureCallback {
     private Context context;
     private String albumName;
     private int orientation;
+
+    public static final String ACTION = "com.example.shustrik.roadlog.CAPTURED";
 
     public PictureSaveCallback(boolean needCameraRelease, int orientation, CameraPreview preview,
                                String albumName, Context context) {
@@ -43,9 +46,6 @@ public class PictureSaveCallback implements Camera.PictureCallback {
             Log.w("ANNA", "File is null");
             return;
         }
-//            ExifInterface exif = new ExifInterface(pictureFile.getPath());
-//            exif.setAttribute(ExifInterface.TAG_ORIENTATION, String.valueOf(orient));
-//            Log.w("ANNA", "just in case: " + exif.getAttribute(ExifInterface.TAG_ORIENTATION));
             if (FileUtils.saveToFile(pictureFile, data)) {
                 if (orientation == 1) {
                     try {
@@ -59,6 +59,9 @@ public class PictureSaveCallback implements Camera.PictureCallback {
                 }
                 //broadcast: send notification to activity (at least Hey! One more!)
                 FileUtils.galleryAddPic(pictureFile.getPath(), context);
+                Intent intent = new Intent();
+                intent.setAction(ACTION);
+                context.sendBroadcast(intent);
             }
     }
 }

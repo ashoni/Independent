@@ -3,5 +3,15 @@
     <string name="action_settings">Settings</string>
 
     <!-- Interval between taking photos (setting in SharedPreferences) -->
-    <string name="picture_interval">PictureInterval</string>
+    <string name="picture_interval">Interval</string>
+    <string name="pref_camera">Camera</string>
+    <string name="pref_focus">Focus Mode</string>
+
+    <string name="auto">Auto</string>
+    <string name="infinite">Infinite</string>
+    <string name="back">Back camera</string>
+    <string name="front">Front camera</string>
+    <string name="picture_amount">Picture amount</string>
+
+    <string name="album_name">RoadLog</string>
 </resources>

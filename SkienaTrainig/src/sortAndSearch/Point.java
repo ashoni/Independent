@@ -1,3 +1,5 @@
+package sortAndSearch;
+
 public class Point implements Comparable<Point> {
     public double x;
     public double y;

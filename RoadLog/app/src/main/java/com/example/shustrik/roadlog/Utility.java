@@ -11,13 +11,6 @@ import android.widget.Toast;
 
 
 public abstract class Utility {
-    //Surface from widget
-    public static SurfaceHolder activateWidget() {
-        return null;
-    }
-
-    public static void deactivateWidget() {}
-
     //Called on main fragment create
     public static boolean checkCameraExists(Activity activity) {
         return activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
@@ -26,6 +19,28 @@ public abstract class Utility {
     //get period from preferences
     public static long getPicturesPeriod(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getLong(context.getString(R.string.picture_interval), 5000);
+        long minutes = prefs.getLong("pref_interval", 30);
+        return minutes * 60 * 1000;
+    }
+
+    //true for back camera, false for front
+    public static boolean getCameraType(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt("pref_camera", 0) == 0;
+    }
+
+    public static int getFocusMode(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt("pref_focus", 0);
+    }
+
+    public static int getPictureAmount(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt("pref_focus", 0);
+    }
+
+    public static String getAlbumName(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString("album_name", "RoadLog");
     }
 }

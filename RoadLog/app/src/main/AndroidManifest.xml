@@ -24,10 +24,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/title_activity_settings"
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <service android:name=".CameraService" android:enabled="true" android:exported="false"/>
         <receiver android:name=".CameraService$AlarmReceiver" android:enabled="true" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".MainActivity$ImageCaptureReceiver">
+            <intent-filter>
+                <action android:name="com.example.shustrik.roadlog.CAPTURED">
+                </action>
             </intent-filter>
         </receiver>
     </application>

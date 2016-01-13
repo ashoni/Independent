@@ -1,3 +1,7 @@
+package sortAndSearch;
+
+import sortAndSearch.Point;
+
 import java.util.List;
 
 public class Polygon {

@@ -86,7 +86,10 @@ public class MainActivityFragment extends Fragment
 
     private void createCameraIntent() {
         Intent alarmIntent = new Intent(getActivity(), CameraService.AlarmReceiver.class);
-        alarmIntent.putExtra("", 0);
+        alarmIntent.putExtra("pref_camera", Utility.getCameraType(getActivity()));
+        alarmIntent.putExtra("pref_focus", Utility.getFocusMode(getActivity()));
+        alarmIntent.putExtra("album_name", Utility.getAlbumName(getActivity()));
+        alarmIntent.putExtra("pref_picture_amount", Utility.getPictureAmount(getActivity()));
         Log.w("ANNA", "Create camerA intent");
         cameraIntent = PendingIntent.getBroadcast(getActivity(), REQUEST_CODE, alarmIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
